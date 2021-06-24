@@ -1,0 +1,45 @@
+﻿@model web2.Models.User
+@{
+	ViewBag.Title = "About Us";
+}
+
+<style>
+	.user-image-container {
+		height: unset;
+	}
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+@using ( Html.BeginForm( "Index", "AboutUs", FormMethod.Post ) )
+{
+	<p>Thanks for using our website. The contact information for the architect of this website is below. Have a wonderful day!</p>
+	<div id="user-profile-image">
+		<div class="user-image-container">
+			<!--
+				Forgot about adding a picture to the project, so did this instead
+			<img class="user-profile-thumbnail" src=" <amp>string.Concat("data:Image/",
+			Model.UserImage.FileExtension, ";base64,",
+			Model.UserImage.BytesBase64)" />
+				-->
+			<img class="user-profile-thumbnail" src="~/Images/myPic.jpg">
+			<div>
+				@Model.FirstName @Model.LastName
+				<a href="mailto: @Model.Email?subject=Tri-State Music Events">@Model.Email</a>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<button class="button-action" id="btnUpdate" name="btnSubmit" value="more"><i class='far fa-info-circle'></i> More</button>
+		<button class="button-cancel" id="btnUpdate" name="btnSubmit" value="close"><i class='fa fa-times'></i> Close</button>
+	</div>
+
+}
+
+
+
+<script>
+	$(document).ready(function () {
+		SetActiveMenus('aboutus');
+	});
+</script>

@@ -1,0 +1,90 @@
+﻿@model web2.Models.User
+@{
+	ViewBag.Title = "Sign Up";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Enter your information and click the Sign-Up button to sign up.</p>
+
+@using (Html.BeginForm(FormMethod.Post)) {
+	if (Model.ActionType == web2.Models.User.ActionTypes.DuplicateUserID) {
+		<div id="content-locked">
+			<i class="fad fa-exclamation-triangle fa-2x"></i>
+			<span>That user ID has already been used. To sign-up enter a different user ID.</span>
+		</div>
+	}
+	if (Model.ActionType == web2.Models.User.ActionTypes.DuplicateEmail) {
+		<div id="content-locked">
+			<i class="fad fa-exclamation-triangle fa-2x"></i>
+			<span>That email address has already been used. To sign-up enter a different email address.</span>
+		</div>
+	}
+	if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+		<div id="content-locked">
+			<i class="fad fa-exclamation-triangle fa-2x"></i>
+			<span>All fields are required.</span>
+		</div>
+	}
+	<div class="section">
+		<div class="item">
+			<div>@Html.LabelFor(model => model.FirstName)</div>
+			<div>@Html.TextBoxFor(model => model.FirstName, new { @autofocus = "autofocus", id = "suFirstName" })</div>
+		</div>
+		<div class="item">
+			<div>@Html.LabelFor(model => model.LastName)</div>
+			<div>@Html.TextBoxFor(model => model.LastName, new { id = "suLastName" })</div>
+		</div>
+		<div class="item">
+			<div>@Html.LabelFor(model => model.Email)</div>
+			<div>@Html.TextBoxFor(model => model.Email, new { id = "suEmail" })</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="item">
+			<div>@Html.LabelFor(model => model.UserID)</div>
+			<div>@Html.TextBoxFor(model => model.UserID, new { id = "suUserID" })</div>
+		</div>
+		<div class="item">
+			<div>@Html.LabelFor(model => model.Password)</div>
+			<div>@Html.TextBoxFor(model => model.Password, new { type = "password", id = "suPassword" })</div>
+		</div>
+	</div>
+
+	if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+		if (Model.FirstName.Length == 0) {
+			<script>$("#suFirstName").addClass("missing-input");</script>
+			<script>$("#suFirstName").focus();</script>
+
+		}
+		else if (Model.LastName.Length == 0) {
+			<script>$("#suLastName").addClass("missing-input");</script>
+			<script>$("#suLastName").focus();</script>
+
+		}
+		else if (Model.Email.Length == 0) {
+			<script>$("#suEmail").addClass("missing-input");</script>
+			<script>$("#suEmail").focus();</script>
+
+		}
+		else if (Model.UserID.Length == 0) {
+			<script>$("#suUserID").addClass("missing-input");</script>
+			<script>$("#suUserID").focus();</script>
+
+		}
+		else if (Model.Password.Length == 0) {
+			<script>$("#suPassword").addClass("missing-input");</script>
+			<script>$("#suPassword").focus();</script>
+
+		}
+	}
+
+	<div>
+		<button id="btnSignUp" name="btnSubmit" value="signup" class="button-action"><i class="fas fa-user-plus"></i> Sign-Up</button>
+	</div>
+}
+<script>
+	$(document).ready(function () {
+		SetActiveMenus('signup');
+	});
+</script>
