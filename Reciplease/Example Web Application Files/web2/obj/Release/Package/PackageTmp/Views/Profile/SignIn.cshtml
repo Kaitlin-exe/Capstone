@@ -1,0 +1,52 @@
+﻿@model web2.Models.User
+@{
+	ViewBag.Title = "Sign-In";
+}
+<h2>@ViewBag.Title</h2>
+<p>Enter your information and click the Sign-In button.</p>
+@using (Html.BeginForm(FormMethod.Post)) {
+	if (Model.ActionType == web2.Models.User.ActionTypes.LoginFailed) {
+		<div id="content-locked">
+			<i class="fad fa-exclamation-triangle fa-2x"></i>
+			<span>Invalid UserID and/or Password. Please try again.</span>
+		</div>
+	}
+	if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+		<div id="content-locked">
+			<i class="fad fa-exclamation-triangle fa-2x"></i>
+			<span>All fields are required.</span>
+		</div>
+	}
+
+	<div class="section">
+		<div class="item">
+			<div>@Html.LabelFor(model => model.UserID)</div>
+			<div>@Html.TextBoxFor(model => model.UserID, new { @autofocus = "autofocus", id = "siUserID" })</div>
+		</div>
+		<div class="item">
+			<div>@Html.LabelFor(model => model.Password)</div>
+			<div>@Html.TextBoxFor(model => model.Password, new { type = "password", id = "siPassword" })</div>
+		</div>
+	</div>
+	<div>
+		<button id="btnSignIn" name="btnSubmit" value="signin" class="button-action"><i class="fas fa-sign-in-alt"></i> Sign-In</button>
+	</div>
+
+	if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+		if (Model.UserID.Length == 0) {
+			<script>$("#siUserID").addClass("missing-input");</script>
+			<script>$("#siUserID").focus();</script>
+
+		}
+		else if (Model.Password.Length == 0) {
+			<script>$("#siPassword").addClass("missing-input");</script>
+			<script>$("#siPassword").focus();</script>
+
+		}
+	}
+}
+<script>
+	$(document).ready(function () {
+		SetActiveMenus('signin');
+	});
+</script>

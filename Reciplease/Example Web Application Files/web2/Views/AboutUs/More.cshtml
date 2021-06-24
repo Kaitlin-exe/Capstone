@@ -1,0 +1,20 @@
+﻿
+@{
+	ViewBag.Title = "More About Us";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using ( Html.BeginForm( "More", "AboutUs", FormMethod.Post ) )
+{
+<p>@Model.FirstName @Model.LastName dreams of unicorns and butterflies in a world gone mad.</p>
+
+	<div>
+		
+	</div>
+
+	<div class="section">
+		<button class="button-cancel" id="btnUpdate" name="btnSubmit" value="close"><i class='fa fa-times'></i> Close</button>
+	</div>
+
+}

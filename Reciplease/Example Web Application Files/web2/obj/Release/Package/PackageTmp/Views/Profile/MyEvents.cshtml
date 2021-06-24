@@ -1,0 +1,18 @@
+﻿
+@{
+	ViewBag.Title = "MyEvents";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (!Model.IsAuthenticated) {
+	@Html.Partial("NotAuthenticated")
+}
+else {
+	@Html.Partial("UserTabMenu")
+	<p>My Events functionality coming soon.</p>
+}
+<script>
+	$(document).ready(function () {
+		SetActiveMenus('profile', 'events');
+	});
+</script>

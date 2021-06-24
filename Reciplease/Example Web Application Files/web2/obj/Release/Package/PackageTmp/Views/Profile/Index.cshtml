@@ -1,0 +1,118 @@
+﻿@model web2.Models.User
+@{
+	ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Title</h2>
+
+@if (!Model.IsAuthenticated) {
+	@Html.Partial("NotAuthenticated")
+}
+else {
+	@Html.Partial("UserTabMenu")
+	using (Html.BeginForm("Index", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+		<p>To make changes to your profile enter your information below and click the Update button.</p>
+		<div id="user-profile-image">
+			@if (Model.UserImage != null) {
+				if (Model.UserImage.ImageID > 0) {
+					<div class="user-profile-image-container">
+						<img class="user-profile-thumbnail" src="@string.Concat("data:Image/",
+						Model.UserImage.FileExtension, ";base64,",
+						Model.UserImage.BytesBase64)" />
+					</div>
+				}
+			}
+		</div>
+
+		@Html.TextBoxFor(model => model.UserImage.ImageID, new { style = "display: none;" })
+		<div id="user-profile-data">
+			<div class="section">
+				<div class="section">
+					<div>User Profile Image</div>
+					<div>
+						<input class="profile-item" type="file" name="UserImage" id="UserImage" />
+					</div>
+				</div>
+			</div>
+
+			@if (Model.ActionType == web2.Models.User.ActionTypes.DuplicateUserID) {
+				<div id="content-locked">
+					<i class="fad fa-exclamation-triangle fa-2x"></i>
+					<span>That user ID has already been used. Please select a different user ID.</span>
+				</div>
+			}
+			@if (Model.ActionType == web2.Models.User.ActionTypes.DuplicateEmail) {
+				<div id="content-locked">
+					<i class="fad fa-exclamation-triangle fa-2x"></i>
+					<span>That email address has already been used. Please use a different email.</span>
+				</div>
+			}
+			@if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+				<div id="content-locked">
+					<i class="fad fa-exclamation-triangle fa-2x"></i>
+					<span>All fields are required.</span>
+				</div>
+			}
+			<div class="section">
+				<div class="item">
+					<div>@Html.LabelFor(model => model.FirstName)</div>
+					<div>@Html.TextBoxFor(model => model.FirstName, new { @autofocus = "autofocus", id = "prFirstName" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.LastName)</div>
+					<div>@Html.TextBoxFor(model => model.LastName, new { id = "prLastName" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.Email)</div>
+					<div>@Html.TextBoxFor(model => model.Email, new { id = "prEmail" })</div>
+				</div>
+			</div>
+			<div class="section">
+				<div class="item">
+					<div>@Html.LabelFor(model => model.UserID)</div>
+					<div>@Html.TextBoxFor(model => model.UserID, new { id = "prUserID" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.Password)</div>
+					<div>@Html.TextBoxFor(model => model.Password, new { type = "password", id = "prPassword" })</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<button class="button-action" id="btnUpdate" name="btnSubmit" value="update"><i class='far fa-save'></i> Update</button>
+			</div>
+		</div>
+		if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+			if (Model.FirstName.Length == 0) {
+				<script>$("#prFirstName").addClass("missing-input");
+					$("#prFirstName").focus();</script>
+
+			}
+			else if (Model.LastName.Length == 0) {
+				<script>$("#prLastName").addClass("missing-input");
+					$("#prLastName").focus();</script>
+
+			}
+			else if (Model.Email.Length == 0) {
+				<script>$("#prEmail").addClass("missing-input");
+					$("#prEmail").focus();</script>
+
+			}
+			else if (Model.UserID.Length == 0) {
+				<script>$("#prUserID").addClass("missing-input");
+					$("#prUserID").focus();</script>
+
+			}
+			else if (Model.Password.Length == 0) {
+				<script>$("#prPassword").addClass("missing-input");
+					$("#prPassword").focus();</script>
+			}
+		}
+
+	}
+}
+
+<script>
+	$(document).ready(function () {
+		SetActiveMenus('profile', 'index');
+	});
+</script>
