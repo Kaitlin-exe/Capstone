@@ -74,3 +74,5 @@ C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\obj\Debu
 C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\obj\Debug\Reciplease.csproj.CopyComplete
 C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\obj\Debug\Reciplease.dll
 C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\obj\Debug\Reciplease.pdb
+C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\bin\RestSharp.dll
+C:\Users\brand\OneDrive\Desktop\Capstone\Capstone\Reciplease\Reciplease\bin\RestSharp.xml
