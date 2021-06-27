@@ -13,6 +13,7 @@
 	<div class="recipe-card">
 		<link rel="stylesheet" href="css/style2.css">
 
+		@*Iterate over recipes to display them*@
 		@foreach ( Reciplease.Models.Recipe recipe in Model.RecipesToDisplay.recipes )
 		{
 			<aside>
@@ -27,7 +28,9 @@
 				<h2>@recipe.title</h2>
 				<p>Ready In: @recipe.readyInMinutes</p>
 				<p>Servings: @recipe.servings</p>
-				@*@foreach ( Reciplease.Models.Ingredient ingredient in @recipe.extendedIngredients )
+				@*
+					Perhaps having the ingredients listed is too much on the card
+					@foreach ( Reciplease.Models.Ingredient ingredient in @recipe.extendedIngredients )
 				{
 					<ul>
 						<li>@ingredient.name</li>

@@ -12,7 +12,9 @@ using System.Web;
 //#################################################
 namespace Reciplease.Models {
 	public class HomeContent {
-		public RecipeResultsList RecipesToDisplay;
+		public RandomRecipesList RecipesToDisplay;
+		public SearchResultsList SearchResults;
+		
 		public User User;
 	}
 }

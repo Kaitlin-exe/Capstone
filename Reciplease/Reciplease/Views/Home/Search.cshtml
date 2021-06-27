@@ -1,0 +1,48 @@
+﻿@model Reciplease.Models.HomeContent
+
+@{
+	ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div id="user-profile-data">
+	@using ( Html.BeginForm( FormMethod.Post ) )
+	{
+		<div class="section">
+			<button class="button-cancel" id="btnClose" name="btnSubmit" value="close"><i class='fa fa-times'></i> Close</button>
+		</div>
+		<div class="section">
+			<input type="text" id="SearchQuery" name="SearchQuery"/>
+		</div>
+	}
+</div>
+<!--Anything to display?-->
+
+@if ( HttpContext.Current.Request.HttpMethod == "POST" )
+{
+	@*Iterate over recipes to display them*@
+	foreach ( Reciplease.Models.Result recipe in Model.SearchResults.results )
+	{
+		<aside>
+			<a href="#" class="button">
+				<span class="icon icon-play">
+					<img width="600" src="https://spoonacular.com/recipeImages/@recipe.image" alt=@recipe.title onerror="this.onerror=null;this.src=''" ; />
+				</span>
+			</a>
+		</aside>
+
+		<article>
+			<h2>@recipe.title</h2>
+			<p>Ready In: @recipe.readyInMinutes</p>
+			@*
+					Perhaps having the ingredients listed is too much on the card
+					@foreach ( Reciplease.Models.Ingredient ingredient in @recipe.extendedIngredients )
+				{
+					<ul>
+						<li>@ingredient.name</li>
+					</ul>
+				}*@
+		</article>
+	}
+}

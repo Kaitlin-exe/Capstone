@@ -7,8 +7,8 @@ using System.Linq;
 using System.Web;
 
 namespace Reciplease.Models {
-	[JsonObjectAttribute]
-	public class RecipeResultsList : IEnumerable {
+	[JsonObjectAttribute] // need this attribute to allow deserialization of the api results
+	public class RandomRecipesList : IEnumerable {
 		public List<Recipe> recipes;
 
 		// Implementation for the GetEnumerator method.

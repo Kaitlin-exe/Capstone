@@ -130,10 +130,10 @@
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\HomeContent.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Instructions.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeAPI.cs" />
-    <Compile Include="Models\RecipeResultsList.cs" />
+    <Compile Include="Models\RandomRecipesList.cs" />
+    <Compile Include="Models\SearchResultsList.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -173,6 +173,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

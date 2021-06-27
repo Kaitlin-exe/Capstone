@@ -12,7 +12,7 @@ using System.Web;
 //#################################################
 namespace Reciplease.Models {
 	public class Ingredient {
-		public long id = 0;
+		public string id = string.Empty;
 		public string name = string.Empty;
 		public string amount = string.Empty;
 		public string unit = string.Empty;
