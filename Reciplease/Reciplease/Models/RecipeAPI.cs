@@ -8,15 +8,18 @@ using System.Web;
 
 namespace Reciplease.Models {
 	public class RecipeAPI {
+		const string APIKEY = "42b1ebc198msh0a6b9caf8b93dc9p1e52ccjsn888e76e0bd8a";
+
 		// Gets 5 random recipes from the api, this is very costly as it counts as 5 requests in the api
 		public static RandomRecipesList Get5RandomAPIRecipes( ) {
+
 
 			RandomRecipesList Recipes = new RandomRecipesList( );
 
 			// get 
 			var client = new RestClient( "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=5" );
 			var request = new RestRequest( Method.GET );
-			request.AddHeader( "x-rapidapi-key", "42b1ebc198msh0a6b9caf8b93dc9p1e52ccjsn888e76e0bd8a" );
+			request.AddHeader( "x-rapidapi-key", APIKEY );
 			request.AddHeader( "x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com" );
 			IRestResponse response = client.Execute( request );
 
@@ -39,7 +42,7 @@ namespace Reciplease.Models {
 			// get 
 			var client = new RestClient( "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=" + SearchQuery  + "& number=20&offset=0&instructionsRequired=true" );
 			var request = new RestRequest( Method.GET );
-			request.AddHeader( "x-rapidapi-key", "42b1ebc198msh0a6b9caf8b93dc9p1e52ccjsn888e76e0bd8a" );
+			request.AddHeader( "x-rapidapi-key", APIKEY );
 			request.AddHeader( "x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com" );
 			IRestResponse response = client.Execute( request );
 
@@ -48,6 +51,11 @@ namespace Reciplease.Models {
 			{
 				Recipes = JsonConvert.DeserializeObject<SearchResultsList>( response.Content );
 			}
+			else if ( response.StatusCode == HttpStatusCode.Unauthorized )
+			{
+				// quota is gone
+			}
+
 
 			return Recipes;
 		}

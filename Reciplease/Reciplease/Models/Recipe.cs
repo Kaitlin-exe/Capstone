@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
-//#################################################
-// Models.Recipe
-//
-// Contains the elements of a recipe returned by random recipes call to api
-// 
-//#################################################
 namespace Reciplease.Models {
+	//#################################################
+	// Models.Recipe
+	//
+	// Contains the elements of a recipe returned by random recipes call to api
+	// 
+	//#################################################
 	public class Recipe {
 		public string id = string.Empty;
 		public string title = string.Empty;
@@ -22,5 +21,19 @@ namespace Reciplease.Models {
 		public List<String> diets;
 		public List<String> dishTypes;
 		public List<Ingredient> extendedIngredients;
+		public List<Nutrition> nutrition;
+	}
+
+	// only supplied when you pull the recipe from the api directly, not in search results
+	public class Nutrition {
+		public List<Nutrients> nutrients;
+	}
+
+	public class Nutrients {
+		public string name;
+		public string title;
+		public string amount;
+		public string unit;
+		public string percentOfDailyNeeds;
 	}
 }
