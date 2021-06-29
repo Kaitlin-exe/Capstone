@@ -36,13 +36,29 @@ namespace Reciplease.Controllers {
 			Models.HomeContent h = new Models.HomeContent
 			{
 				// get recipes to display
-				SearchResults = RecipeAPI.BasicRecipeSearch( col[1].ToString( ) )
+				SearchResults = RecipeAPI.RecipeSearch( col[1].ToString( ) )
 
 				// get the user object when we set up users
 			};
 
 			return View( h );
-		}		
+		}
+
+
+		public ActionResult Recipe(  ) {
+			// update to search model when that is created
+			Models.HomeContent h = new Models.HomeContent
+			{
+				// get recipes to display
+				SingleRecipe = RecipeAPI.GetRecipeById( Convert.ToString(RouteData.Values["id"]) )
+
+				// get the user object when we set up users
+			};
+
+			return View( h );
+		}
+
+
 
 		public ActionResult About( ) {
 			ViewBag.Message = "Your application description page.";

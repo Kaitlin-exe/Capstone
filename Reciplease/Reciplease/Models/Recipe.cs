@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,15 +22,15 @@ namespace Reciplease.Models {
 		public List<String> diets;
 		public List<String> dishTypes;
 		public List<Ingredient> extendedIngredients;
-		public List<Nutrition> nutrition;
+		//public List<Nutrition> nutrition;
 	}
 
 	// only supplied when you pull the recipe from the api directly, not in search results
 	public class Nutrition {
-		public List<Nutrients> nutrients;
+		public List<Nutrient> nutrients;
 	}
-
-	public class Nutrients {
+	
+	public class Nutrient {
 		public string name;
 		public string title;
 		public string amount;

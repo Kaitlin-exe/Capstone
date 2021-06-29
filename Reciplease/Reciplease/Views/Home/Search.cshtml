@@ -25,9 +25,9 @@
 	foreach ( Reciplease.Models.Result recipe in Model.SearchResults.results )
 	{
 		<aside>
-			<a href="#" class="button">
+			<a href="@Url.Action("Recipe", new { id = recipe.id })" class="button">
 				<span class="icon icon-play">
-					<img width="600" src="https://spoonacular.com/recipeImages/@recipe.image" alt=@recipe.title onerror="this.onerror=null;this.src=''" ; />
+					<img width="600" src="https://spoonacular.com/recipeImages/@recipe.image" alt=@recipe.title onerror="this.onerror = null; this.src = '/Content/images/no-photo.jpg'" ; />
 				</span>
 			</a>
 		</aside>
