@@ -59,5 +59,12 @@ namespace Reciplease.Models {
 
 			return Recipes;
 		}
+
+
+		public static SearchResultsList AdvancedSearch( string SearchQuery, string cuisine, string ingredients, string diets, string excludedIngredients, string intolerances, string type ) {
+			SearchResultsList Recipes = new SearchResultsList( );
+
+			return Recipes;
+		}
 	}
 }
