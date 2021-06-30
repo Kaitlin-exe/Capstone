@@ -159,6 +159,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Profile\Profile.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -175,6 +176,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Recipe.cshtml" />
+    <Content Include="Views\Profile\index.cshtml" />
+    <Content Include="Views\Profile\Sign_In" />
+    <Content Include="Views\Profile\Sign_Up" />
+    <Content Include="Views\Account_Settings\Edit_Email" />
+    <Content Include="Views\Account_Settings\Edit_Info" />
+    <Content Include="Views\Cart\Add1" />
+    <Content Include="Views\Cart\index.cshtml" />
+    <Content Include="Views\Cart\Price" />
+    <Content Include="Views\Cart\Quantity" />
+    <Content Include="Views\Cart\Remove1" />
+    <Content Include="Views\Cart\Remove_Item" />
+    <Content Include="Views\Favorites\Add_Favorite" />
+    <Content Include="Views\Favorites\Remove_Favorite" />
+    <Content Include="Views\Favorites\View_Favorite" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
