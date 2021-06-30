@@ -32,35 +32,39 @@
     </div>
 		--->
 	<nav id="sidebar">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
-	          <span class="sr-only">Toggle Menu</span>
-	        </button>
-        </div>
-	  		<h1><a href="index.html" class="logo">Reciplease</a></h1>
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>
-          </li>
-          <li>
-              <a href="#"><span class="fa fa-search mr-3"></span> Search</a>
-          </li>
-		            <li>
-              <a href="#"><span class="fa fa-paper-plane-o mr-3"></span> Recently Viewed</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-shopping-cart mr-3"></span> My Cart</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-user mr-3"></span> My Account</a>
-          </li>
-		            <li>
-            <a href="#"><span class="fa fa-user mr-3"></span>Account Settings</a>
-          </li>
-        </ul>
+		<div class="custom-menu">
+			<button type="button" id="sidebarCollapse" class="btn btn-primary">
+				<i class="fa fa-bars"></i>
+				<span class="sr-only">Toggle Menu</span>
+			</button>
+		</div>
+		<!-- can't do page calls this way (brandon)
+			<h1><a href="index.html" class="logo">Reciplease</a></h1>
+		-->
+		<h1 class="logo">@Html.ActionLink( "Reciplease", "Index", "Home" )</h1>
+		<!-- Have to do it in this way-->
+		<ul class="list-unstyled components mb-5">
+			<li class="active">
+				<a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>
+			</li>
+			<li>
+				<a href="#"><span class="fa fa-search mr-3"></span> Search</a>
+			</li>
+			<li>
+				<a href="#"><span class="fa fa-paper-plane-o mr-3"></span> Recently Viewed</a>
+			</li>
+			<li>
+				<a href="#"><span class="fa fa-shopping-cart mr-3"></span> My Cart</a>
+			</li>
+			<li>
+				<a href="#"><span class="fa fa-user mr-3"></span> My Account</a>
+			</li>
+			<li>
+				<a href="#"><span class="fa fa-user mr-3"></span>Account Settings</a>
+			</li>
+		</ul>
 
-    	</nav>
+	</nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
