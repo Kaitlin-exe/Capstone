@@ -22,7 +22,7 @@ namespace Reciplease.Models {
 		public List<String> diets;
 		public List<String> dishTypes;
 		public List<Ingredient> extendedIngredients;
-		//public List<Nutrition> nutrition;
+		public Nutrition nutrition;
 	}
 
 	// only supplied when you pull the recipe from the api directly, not in search results
