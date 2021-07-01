@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Reciplease.Models {
@@ -21,13 +24,27 @@ namespace Reciplease.Models {
 		public List<String> cuisines;
 		public List<String> diets;
 		public List<String> dishTypes;
-		public List<Ingredient> extendedIngredients;
-		public Nutrition nutrition;
+		public List<Ingredient> extendedIngredients;	
+		public JsonObject nutrition;
+		// create method to parse jsonobject
+
+		public string SplitInstructions() {
+			string pattern = @"(?:\.\' ')";
+
+			string newString = Regex.Replace( this.instructions, pattern, "\r\n" ); 
+			
+
+			// working on replacing sentence ends with a new line
+
+
+			return newString;
+		}
 	}
 
 	// only supplied when you pull the recipe from the api directly, not in search results
 	public class Nutrition {
-		public List<Nutrient> nutrients;
+		public JsonObject nutrients { get; set; }
+
 	}
 	
 	public class Nutrient {
