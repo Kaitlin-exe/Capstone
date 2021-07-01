@@ -28,16 +28,20 @@ namespace Reciplease.Models {
 		public JsonObject nutrition;
 		// create method to parse jsonobject
 
-		public string SplitInstructions() {
-			string pattern = @"(?:\.\' ')";
+		public string[] SplitInstructions() {
+			string pattern = @"(?<=[\.!\?])\s+";
 
-			string newString = Regex.Replace( this.instructions, pattern, "\r\n" ); 
+			string cleanedInstructions = Regex.Replace( this.instructions, "<.*?>", String.Empty );
+			
+
+			string[] ainstructions = Regex.Split( cleanedInstructions, pattern );
+
 			
 
 			// working on replacing sentence ends with a new line
 
 
-			return newString;
+			return ainstructions;
 		}
 	}
 
