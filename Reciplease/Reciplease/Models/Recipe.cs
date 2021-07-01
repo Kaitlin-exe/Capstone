@@ -28,18 +28,19 @@ namespace Reciplease.Models {
 		public JsonObject nutrition;
 		// create method to parse jsonobject
 
+		
+		public List<Nutrient> GetNutrients( ){
+			List<Nutrient> nutrients = new List<Nutrient>();
+
+			return nutrients;
+		}
+
+		
 		public string[] SplitInstructions() {
 			string pattern = @"(?<=[\.!\?])\s+";
 
 			string cleanedInstructions = Regex.Replace( this.instructions, "<.*?>", String.Empty );
-			
-
 			string[] ainstructions = Regex.Split( cleanedInstructions, pattern );
-
-			
-
-			// working on replacing sentence ends with a new line
-
 
 			return ainstructions;
 		}
@@ -47,8 +48,7 @@ namespace Reciplease.Models {
 
 	// only supplied when you pull the recipe from the api directly, not in search results
 	public class Nutrition {
-		public JsonObject nutrients { get; set; }
-
+		public List<Nutrient> nutrients;
 	}
 	
 	public class Nutrient {
