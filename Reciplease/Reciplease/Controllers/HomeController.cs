@@ -35,6 +35,9 @@ namespace Reciplease.Controllers {
 
 			SearchItems searchItems = default( SearchItems );
 
+		// added this items to the model in a struct so we can continue using same search items
+		// ternary : if hidden element is null, use original search page element, else use hidden element
+
 			searchItems.query = col["hquery"] == null ? col["SearchQuery"] : col["hquery"];
 			searchItems.cuisine = col["hcuisine"] == null ? col["Cuisine"] : col["hcuisine"];
 			searchItems.ingredients = col["hingredients"] == null ? col["Ingredients"] : col["hingredients"];
