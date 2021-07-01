@@ -56,31 +56,32 @@ namespace Reciplease.Models {
 		}
 
 
-		public static SearchResultsList RecipeSearch( string SearchQuery, string cuisine = "", string ingredients = "", string diets = "", string excludedIngredients ="", string intolerances = "", string type = "") {
+		public static SearchResultsList RecipeSearch( string SearchQuery, string cuisine = "", string ingredients = "", string diets = "", string excludedIngredients ="", string intolerances = "", string type = "", int index = 0) {
 			SearchResultsList Recipes = new SearchResultsList( );
 			Regex RegexComma = new Regex( "," );
 			Regex RegexSpace = new Regex( " " );
 
-
-			SearchQuery = RegexComma.Replace( SearchQuery, "%2C%20" );
-			SearchQuery = RegexSpace.Replace( SearchQuery, "%20" );
-			cuisine = RegexComma.Replace( cuisine, "%2C%20" );
-			cuisine = RegexSpace.Replace( cuisine, "%20" );
-			ingredients = RegexComma.Replace( ingredients, "%2C%20" );
-			ingredients = RegexSpace.Replace( ingredients, "%20" );
-			excludedIngredients = RegexComma.Replace( excludedIngredients, "%2C%20" );
-			excludedIngredients = RegexSpace.Replace( excludedIngredients, "%20" );
-			intolerances = RegexComma.Replace( intolerances, "%2C%20" );
-			intolerances = RegexSpace.Replace( intolerances, "%20" );
-			type = RegexComma.Replace( type, "%2C%20" );
-			type = RegexSpace.Replace( type, "%20" );
+			// clean parts
+			if ( SearchQuery != null ) SearchQuery = RegexComma.Replace( SearchQuery, "%2C%20" );
+			if ( SearchQuery != null ) SearchQuery = RegexSpace.Replace( SearchQuery, "%20" );
+			if ( cuisine != null ) cuisine = RegexComma.Replace( cuisine, "%2C%20" );
+			if ( cuisine != null ) cuisine = RegexSpace.Replace( cuisine, "%20" );
+			if ( ingredients != null ) ingredients = RegexComma.Replace( ingredients, "%2C%20" );
+			if ( ingredients != null ) ingredients = RegexSpace.Replace( ingredients, "%20" );
+			if ( excludedIngredients != null ) excludedIngredients = RegexComma.Replace( excludedIngredients, "%2C%20" );
+			if ( excludedIngredients != null ) excludedIngredients = RegexSpace.Replace( excludedIngredients, "%20" );
+			if ( intolerances != null ) intolerances = RegexComma.Replace( intolerances, "%2C%20" );
+			if ( intolerances != null ) intolerances = RegexSpace.Replace( intolerances, "%20" );
+			if ( type != null ) type = RegexComma.Replace( type, "%2C%20" );
+			if ( type != null ) type = RegexSpace.Replace( type, "%20" );
 
 
 			var client = new RestClient( "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=" + SearchQuery +
 									 "&diet=" +									diets +
 									 "&excludeIngredients=" +					excludedIngredients +
 									 "&intolerances=" +							intolerances +
-									 "&number=20&type=" +						type +
+									 "&number=20&offset=" +						index * 20 +
+									 "&type=" +									type +
 									 "&instructionsRequired=true&cuisine=" +	cuisine
 									 );
 
