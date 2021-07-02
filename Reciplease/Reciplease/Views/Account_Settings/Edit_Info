@@ -4,6 +4,8 @@
 }
 <h2>@ViewBag.Title</h2>
 
+<link rel="stylesheet" href="Reciplease/Reciplease/Views/Profile/Profile.css">
+
 @using (Html.BeginForm("Edit", "Account"))
 	{
 		@Html.EditorFor(model => model.FirstName)
