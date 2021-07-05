@@ -15,3 +15,4 @@ Reciplease/.vs/config/applicationhost.config
 Reciplease/Reciplease/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Reciplease/Reciplease/obj/Debug/Reciplease.csproj.CoreCompileInputs.cache
 Reciplease/.vs/Reciplease/v15/.suo
+*.config
