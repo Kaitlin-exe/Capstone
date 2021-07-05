@@ -6,32 +6,15 @@
 <p>Enter your information and click the Sign-In button.</p>
 
 
-@*@using (Html.BeginForm(FormMethod.Post)) {
-		if (Model.ActionType == web2.Models.User.ActionTypes.InvalidUserID) {
-			<div id="content-locked">
-				<i class=" fad fa-exclamation-triangle fa-2x"></i>
-				<span>Invalid UserID. Please try again.</span>
-			</div>
-		}
-	}
-		@using (Html.BeginForm(FormMethod.Post)) {
-			if (Model.ActionType == web2.Models.User.ActionTypes.InvalidPassword) {
-				<div id="content-locked">
-					<i class=" fad fa-exclamation-triangle fa-2x"></i>
-					<span>Invalid Password. Please try again.</span>
-				</div>
-			}
-		}*@
-
 
 @using (Html.BeginForm(FormMethod.Post)) {
-	if (Model.ActionType == web2.Models.User.ActionTypes.LoginFailed) {
+	if (Model.ActionType == Reciplease.Models.User.ActionTypes.LoginFailed) {
 		<div id="content-locked">
 			<i class=" fad fa-exclamation-triangle fa-2x"></i>
 			<span>Invalid UserID. Please try again.</span>
 		</div>
 	}
-	if (Model.ActionType == web2.Models.User.ActionTypes.RequiredFieldsMissing) {
+	if (Model.ActionType == Reciplease.Models.User.ActionTypes.RequiredFieldsMissing) {
 		<div id="content-locked">
 			<i class=" fad fa-exclamation-triangle fa-2x"></i>
 			<span>All fields are required.</span>

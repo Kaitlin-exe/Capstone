@@ -129,7 +129,6 @@
     </Compile>
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\HomeContent.cs" />
-    <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeAPI.cs" />
     <Compile Include="Models\RandomRecipesList.cs" />
@@ -190,6 +189,7 @@
     <Content Include="Views\Favorites\Add_Favorite" />
     <Content Include="Views\Favorites\Remove_Favorite" />
     <Content Include="Views\Favorites\View_Favorite" />
+    <Content Include="Views\Home\SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
